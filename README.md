@@ -21,7 +21,15 @@
 
 ## 動作確認
 - nslookup結果について、Storage AccountがPrivate IP (10.0.10.5) に名前解決されることを確認
-- nslookup↓UbuntuのDNS(127.0.0.53)↓Azure Private DNS Zone↓storagekuboi01.privatelink.blob.core.windows.net↓10.0.10.5
+- nslookup
+↓
+UbuntuのDNS(127.0.0.53)
+↓
+Azure Private DNS Zone
+↓
+storagekuboi01.privatelink.blob.core.windows.net
+↓
+10.0.10.5
 <img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/6c180d03-e57b-4484-bb13-e3be351bfc8d" />
 
 ## 学んだこと
