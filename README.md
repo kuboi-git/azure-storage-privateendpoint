@@ -2,7 +2,7 @@
 
 ## 概要
 - Azure Storage Accountに対してPrivate Endpointを構成し、Private IP経由で接続確認を実施
-- 
+  
 ## 使用サービス
 - Azure Storage Account
 - Blob Container
@@ -12,10 +12,10 @@
 - Ubuntu VM
 
 ## 作成順番
-1. Resource Group作成
-2. Storage Account作成
-3. Blob Container作成
-4. Private Endpoint作成
+1. Resource Group作成      「rg-storage-privateendpoint」
+2. Storage Account作成     「storagekuboi01」
+3. Blob Container作成      「container-test-01」
+4. Private Endpoint作成    「privateendpoint-test-01」
 5. Private DNS Zone統合
 6. Linux VMからnslookup実行
 
@@ -28,7 +28,7 @@
 - Azure Private DNS の基本
 - nslookupによる名前解決確認
 - Azure内部通信の仕組み
-- 
+
 ## 苦戦した点
 Storage Account名を誤って入力し、nslookupがNXDOMAINになった。
 Storage Account名を確認して解決。（Resource Groupから再作成しなおしました）
