@@ -30,5 +30,5 @@
 - Azure内部通信の仕組み
 
 ## 苦戦した点
-Storage Account名を誤って入力し、nslookupがNXDOMAINになった。
-Storage Account名を確認して解決。（Resource Groupから再作成しなおしました）
+- Storage Account名を誤って入力し、nslookupがNXDOMAINになった。
+- Storage Account名を確認して解決。（Resource Groupから再作成しなおしました）
