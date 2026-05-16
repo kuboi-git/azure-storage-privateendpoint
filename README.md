@@ -27,7 +27,6 @@
 - DNS名前解決の流れ
 - Azure Private DNS Zoneの役割
 - Private IPを利用したAzure内部通信
-- 
 
 ## 苦戦した点
 - Storage Account名を誤って入力し、nslookupがNXDOMAINになった。
