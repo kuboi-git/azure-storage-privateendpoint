@@ -4,6 +4,7 @@
 - Azure Storage Accountに対してPrivate Endpointを構成し、Private IP経由で接続確認を実施
 
 ## 構成図
+```text
 vm-test-01 (Ubuntu)
         ↓
 vnet-test-01
@@ -16,6 +17,7 @@ privateendpoint-test-01
 storagetestkuboi01
           ↓
 Private DNS Zone
+```text
 
 ## 使用サービス
 - Azure Storage Account
