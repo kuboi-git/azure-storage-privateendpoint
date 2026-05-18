@@ -17,7 +17,6 @@ privateendpoint-test-01
 storagetestkuboi01
           ↓
 Private DNS Zone
-```text
 
 ## 使用サービス
 - Azure Storage Account
