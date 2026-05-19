@@ -22,7 +22,7 @@ vnet-test-01
           ↓
 privateendpoint-test-01
           ↓
-storagetestkuboi01
+storagekuboi01
           ↓
 Private DNS Zone
 ```
@@ -70,7 +70,7 @@ Private DNS Zone
 ## Private DNS 名前解決
 
 ```bash
-nslookup storagetestkuboi01.blob.core.windows.net
+nslookup storagekuboi01.blob.core.windows.net
 ```
 <img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
 
@@ -78,9 +78,9 @@ nslookup storagetestkuboi01.blob.core.windows.net
 ### 実行結果
 
 ```text
-storagetestkuboi01.blob.core.windows.net
+storagekuboi01.blob.core.windows.net
 canonical name =
-storagetestkuboi01.privatelink.blob.core.windows.net
+storagekuboi01.privatelink.blob.core.windows.net
 
 Address: 10.10.10.4
 ```
