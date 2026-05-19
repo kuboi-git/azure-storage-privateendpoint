@@ -1,6 +1,6 @@
 # Azure Storage Private Endpoint
 
-## 1. 概要
+# 1. 概要
 Azure Storage Accountに対して、Private Endpointを構成し、  
 Private DNSを利用した名前解決と閉域通信を確認しました。
 
@@ -29,7 +29,6 @@ Private DNS Zone
 ---
 
 # 3. 使用サービス
-
 | サービス | 用途 |
 |---|---|
 | Resource Group | リソース管理 |
@@ -45,7 +44,6 @@ Private DNS Zone
 ---
 
 # 4. 作成順序
-
 1. Resource Group 作成
 2. Virtual Network 作成
 3. subnet-app 作成
@@ -63,8 +61,7 @@ Private DNS Zone
 ---
 
 # 5. 動作確認
-
-## Private DNS 名前解決
+## Private DNS名前解決
 
 ```bash
 nslookup storagekuboi01.blob.core.windows.net
@@ -78,10 +75,10 @@ nslookup storagekuboi01.blob.core.windows.net
 
 # 6. 苦戦したこと
 
-## Storage Account が見つからなかった
+## Storage Accountが見つからなかった
 
 ### 原因
-Storage Account 名がグローバルで重複していた。
+Storage Account名がグローバルで重複していた。
 
 ### 解決方法
 一意になる名前へ変更し解決。
@@ -91,17 +88,17 @@ Storage Account 名がグローバルで重複していた。
 ## SSH接続できなかった
 
 ### 原因
-.pem ファイル配置ミス。
+.pemファイル配置ミス。
 
 ### 解決方法
-PowerShell の実行ディレクトリを修正し解決。
+PowerShellの実行ディレクトリを修正し解決。
 
 ---
 
 # 7. 学んだこと
 
-- Azure のネットワーク基礎
-- NSG による通信制御
+- Azureのネットワーク基礎
+- NSGによる通信制御
 - Public通信とPrivate通信の違い
-- Private Endpoint による閉域化
-- Private DNS による名前解決 
+- Private Endpointによる閉域化
+- Private DNSによる名前解決 
