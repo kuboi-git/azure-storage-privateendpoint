@@ -72,25 +72,11 @@ Private DNS Zone
 ```bash
 nslookup storagekuboi01.blob.core.windows.net
 ```
-<img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
-
 
 ### 実行結果
-
-```text
-storagekuboi01.blob.core.windows.net
-canonical name =
-storagekuboi01.privatelink.blob.core.windows.net
-
-Address: 10.10.10.4
-```
-
-Private IP が返却されることを確認。
-
----
+<img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
 
 ## Azure Monitor
-
 - CPUメトリック確認
 - Alert Rule 作成
 - CPU負荷テスト実施
