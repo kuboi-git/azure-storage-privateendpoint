@@ -12,9 +12,9 @@ Public Access を制限し、Azure VM から Private IP 経由で Storage Accoun
 
 ```text
 vm-test-01 (Ubuntu)
-        ↓
+          ↓
 rg-storage-privateendpoint
-        ↓
+          ↓
 vnet-test-01
 ├─ subnet-app
 │
