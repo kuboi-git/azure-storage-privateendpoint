@@ -1,10 +1,10 @@
 # Azure Storage Private Endpoint
 
 ## 1. 概要
-Azure Storage Account に対して Private Endpoint を構成し、  
-Private DNS を利用した名前解決と閉域通信を確認した学習用Repositoryです。
+Azure Storage Accountに対して、Private Endpointを構成し、  
+Private DNSを利用した名前解決と閉域通信を確認しました。
 
-Public Access を制限し、Azure VM から Private IP 経由で Storage Account へ接続できることを確認しました。
+Public Accessを制限し、Azure VMからPrivate IP経由でStorage Accountへ接続できることを確認しました。
 
 ---
 
@@ -42,7 +42,6 @@ Private DNS Zone
 | Blob Container | データ保存 |
 | Private Endpoint | 閉域接続 |
 | Private DNS Zone | DNS名前解決 |
-| Azure Monitor | 監視 |
 
 ---
 
@@ -61,7 +60,6 @@ Private DNS Zone
 11. Public Network Access 制限
 12. SSH接続
 13. nslookup による名前解決確認
-14. Azure Monitor / Alert Rule 作成
 
 ---
 
@@ -76,10 +74,6 @@ nslookup storagekuboi01.blob.core.windows.net
 ### 実行結果
 <img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
 
-## Azure Monitor
-- CPUメトリック確認
-- Alert Rule 作成
-- CPU負荷テスト実施
 
 ---
 
@@ -92,16 +86,6 @@ Storage Account 名がグローバルで重複していた。
 
 ### 解決方法
 一意になる名前へ変更し解決。
-
----
-
-## HTTP通信できなかった
-
-### 原因
-NSG の Inbound Rule 未設定。
-
-### 解決方法
-HTTP(80)許可ルールを追加し解決。
 
 ---
 
@@ -121,9 +105,4 @@ PowerShell の実行ディレクトリを修正し解決。
 - NSG による通信制御
 - Public通信とPrivate通信の違い
 - Private Endpoint による閉域化
-- Private DNS による名前解決
-- Azure Monitor の基本
-- Alert Rule の基本
-- Azure従量課金の考え方
-- VM停止（割り当て解除）の重要性
-- 
+- Private DNS による名前解決 
