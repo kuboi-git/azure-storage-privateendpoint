@@ -1,33 +1,139 @@
-# azure-storage-privateendpoint
+# Azure Storage Private Endpoint
 
-## 概要
-- Azure Storage Accountに対してPrivate Endpointを構成し、Private IP経由で接続確認を実施
+## 1. 概要
+Azure Storage Account に対して Private Endpoint を構成し、  
+Private DNS を利用した名前解決と閉域通信を確認した学習用Repositoryです。
 
-## 使用サービス
-- Azure Storage Account
-- Blob Container
-- Private Endpoint
-- Private DNS Zone
-- Virtual Network
-- Ubuntu VM
+Public Access を制限し、Azure VM から Private IP 経由で Storage Account へ接続できることを確認しました。
 
-## 作成順番
-1. Resource Group作成      「rg-storage-privateendpoint」
-2. Storage Account作成     「storagekuboi01」
-3. Blob Container作成      「container-test-01」
-4. Private Endpoint作成    「privateendpoint-test-01」
-5. Private DNS Zone統合
-6. Linux VMからnslookup実行
+---
 
-## 動作確認
-- nslookup結果について、Storage AccountがPrivate IP (10.0.10.5) に名前解決されることを確認
-<img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/6c180d03-e57b-4484-bb13-e3be351bfc8d" />
+# 2. 構成図
 
-## 学んだこと
-- DNS名前解決の流れ
-- Azure Private DNS Zoneの役割
-- Private IPを利用したAzure内部通信
+```text
+vm-test-01 (Ubuntu)
+        ↓
+vnet-test-01
+├─ subnet-app
+│
+└─ subnet-private-endpoint
+          ↓
+privateendpoint-test-01
+          ↓
+storagetestkuboi01
+          ↓
+Private DNS Zone
+```
 
-## 苦戦した点
-- Storage Account名を誤って入力し、nslookupがNXDOMAINになった。
-- Storage Account名を確認して解決。（Resource Groupから再作成しなおしました）
+---
+
+# 3. 使用サービス
+
+| サービス | 用途 |
+|---|---|
+| Resource Group | リソース管理 |
+| Virtual Network | 仮想ネットワーク |
+| Subnet | ネットワーク分離 |
+| NSG | 通信制御 |
+| Ubuntu VM | 接続確認用 |
+| Storage Account | Blob Storage |
+| Blob Container | データ保存 |
+| Private Endpoint | 閉域接続 |
+| Private DNS Zone | DNS名前解決 |
+| Azure Monitor | 監視 |
+
+---
+
+# 4. 作成順序
+
+1. Resource Group 作成
+2. Virtual Network 作成
+3. subnet-app 作成
+4. subnet-private-endpoint 作成
+5. NSG 作成
+6. Ubuntu VM 作成
+7. Storage Account 作成
+8. Blob Container 作成
+9. Private Endpoint 作成
+10. Private DNS Zone 自動作成確認
+11. Public Network Access 制限
+12. SSH接続
+13. nslookup による名前解決確認
+14. Azure Monitor / Alert Rule 作成
+
+---
+
+# 5. 動作確認
+
+## Private DNS 名前解決
+
+```bash
+nslookup storagetestkuboi01.blob.core.windows.net
+```
+
+### 実行結果
+
+```text
+storagetestkuboi01.blob.core.windows.net
+canonical name =
+storagetestkuboi01.privatelink.blob.core.windows.net
+
+Address: 10.10.10.4
+```
+
+Private IP が返却されることを確認。
+
+---
+
+## Azure Monitor
+
+- CPUメトリック確認
+- Alert Rule 作成
+- CPU負荷テスト実施
+
+---
+
+# 6. 苦戦したこと
+
+## Storage Account が見つからなかった
+
+### 原因
+Storage Account 名がグローバルで重複していた。
+
+### 解決方法
+一意になる名前へ変更し解決。
+
+---
+
+## HTTP通信できなかった
+
+### 原因
+NSG の Inbound Rule 未設定。
+
+### 解決方法
+HTTP(80)許可ルールを追加し解決。
+
+---
+
+## SSH接続できなかった
+
+### 原因
+.pem ファイル配置ミス。
+
+### 解決方法
+PowerShell の実行ディレクトリを修正し解決。
+
+---
+
+# 7. 学んだこと
+
+- Azure のネットワーク基礎
+- NSG による通信制御
+- Public通信とPrivate通信の違い
+- Private Endpoint による閉域化
+- Private DNS による名前解決
+- Azure Monitor の基本
+- Alert Rule の基本
+- Azure従量課金の考え方
+- VM停止（割り当て解除）の重要性
+- 
