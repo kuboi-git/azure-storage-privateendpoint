@@ -72,6 +72,8 @@ Private DNS Zone
 ```bash
 nslookup storagetestkuboi01.blob.core.windows.net
 ```
+<img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
+
 
 ### 実行結果
 
