@@ -10,20 +10,22 @@ Public Accessを制限し、Azure VMからPrivate IP経由でStorage Accountへ�
 
 # 2. 構成図
 ```text
-vm-test-01 (Ubuntu)
-          ↓
-rg-storage-privateendpoint
-          ↓
-vnet-test-01
-├─ subnet-app
+Resource Group: rg-storage-privateendpoint
 │
-└─ subnet-private-endpoint
-          ↓
-privateendpoint-test-01
-          ↓
-storagekuboi01
-          ↓
-Private DNS Zone
+├─ Virtual Network: vnet-test-01
+│  ├─ Subnet: subnet-app
+│  │  └─ Ubuntu VM: vm-test-01
+│  │
+│  └─ Subnet: subnet-private-endpoint
+│     └─ Private Endpoint: privateendpoint-test-01
+│        └─ 接続先: storagekuboi01 の Blob
+│
+├─ Storage Account: storagekuboi01
+│  └─ Blob Container
+│
+└─ Private DNS Zone: privatelink.blob.core.windows.net
+   ├─ VNetリンク: vnet-test-01
+   └─ Aレコード: storagekuboi01 → Private EndpointのプライベートIP
 ```
 
 ---
