@@ -14,7 +14,7 @@ Resource Group: rg-storage-privateendpoint
 │
 ├─ Virtual Network: vnet-test-01
 │  ├─ Subnet: subnet-app
-│  │  └─ Ubuntu VM: vm-test-01
+│  │  └─ Ubuntu VM: vm-linux-01
 │  │
 │  └─ Subnet: subnet-private-endpoint
 │     └─ Private Endpoint: privateendpoint-test-01
