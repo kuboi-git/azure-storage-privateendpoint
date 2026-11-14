@@ -65,7 +65,7 @@ Resource Group: rg-storage-privateendpoint
 ---
 
 # 5. 動作確認
-## Private DNS名前解決
+## 5-1 Private DNS名前解決
 
 ```bash
 nslookup storagekuboi01.blob.core.windows.net
@@ -74,6 +74,17 @@ nslookup storagekuboi01.blob.core.windows.net
 ### 実行結果
 <img width="535" height="123" alt="nslookup" src="https://github.com/user-attachments/assets/7ff0cd7f-8fd3-4797-8af3-cd7159bee012" />
 
+---
+
+## 5-2 Private Endpoint経由でファイルを読み取る
+Ubuntu VMから読み取り専用のSAS URLをつかって、'curl'を実行しました。
+
+```bash
+read -rsp 'Blob SAS URLを貼り付けてEnter: ' sas_url && curl -fsS -w '\n接続先IP: %{remote_ip}\nHTTP: %{http_code}\n' "$sas_url"; unset sas_url
+```
+
+### 実行結果
+<img width="452" height="95" alt="tukaukamoスクリーンショット 2026-11-14 143703" src="https://github.com/user-attachments/assets/ddd0ccdb-1cbe-4864-ad37-40af5621b23e" />
 
 ---
 
