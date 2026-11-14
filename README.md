@@ -59,8 +59,6 @@ Resource Group: rg-storage-privateendpoint
 11. Public Network Access 制限
 12. SSH接続
 13. nslookup による名前解決確認
-14. Blobコンテナーにテストファイルをアップロード
-15. テストファイルの「SASの生成」で、読み取り専用・有効期限付きのSAS URLを発行
 
 ---
 
@@ -76,8 +74,15 @@ nslookup storagekuboi01.blob.core.windows.net
 
 ---
 
-## 5-2 Private Endpoint経由でファイルを読み取る
-Ubuntu VMから読み取り専用のSAS URLをつかって、'curl'を実行しました。
+## 5-2 追加検証：Private Endpoint経由でファイルを読み取る
+
+構成図と同じ構成を別のストレージアカウント `stkuboipe20261113`
+で作成し、Ubuntu VMからテストファイルを読み取れるか検証しました。
+
+Blobコンテナーにテストファイルをアップロードし、そのファイルに対して
+読み取り専用・有効期限付きのSAS URLを発行しました。
+VMからそのURLに `curl` でアクセスした結果、接続先はPrivate Endpointの
+`10.0.20.4` で、HTTP 200とファイルの内容が返りました。
 
 ```bash
 read -rsp 'Blob SAS URLを貼り付けてEnter: ' sas_url && curl -fsS -w '\n接続先IP: %{remote_ip}\nHTTP: %{http_code}\n' "$sas_url"; unset sas_url
@@ -85,8 +90,6 @@ read -rsp 'Blob SAS URLを貼り付けてEnter: ' sas_url && curl -fsS -w '\n接
 
 ### 実行結果
 <img width="452" height="85" alt="スクリーンショット 2026-11-14 145121" src="https://github.com/user-attachments/assets/e427d275-6f90-4bf8-8011-ec030f6197b2" />
-
-※別環境で作ったもののため、IPや名前が少しだけ異なります。
 
 ---
 
