@@ -85,6 +85,7 @@ read -rsp 'Blob SAS URLを貼り付けてEnter: ' sas_url && curl -fsS -w '\n接
 
 ### 実行結果
 <img width="452" height="85" alt="スクリーンショット 2026-11-14 145121" src="https://github.com/user-attachments/assets/e427d275-6f90-4bf8-8011-ec030f6197b2" />
+
 ※別環境で作ったもののため、IPや名前が少しだけ異なります。
 
 ---
