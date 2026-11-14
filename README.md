@@ -59,6 +59,8 @@ Resource Group: rg-storage-privateendpoint
 11. Public Network Access 制限
 12. SSH接続
 13. nslookup による名前解決確認
+14. Blobコンテナーにテストファイルをアップロード
+15. テストファイルの「SASの生成」で、読み取り専用・有効期限付きのSAS URLを発行
 
 ---
 
