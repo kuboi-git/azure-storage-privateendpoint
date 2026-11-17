@@ -74,29 +74,10 @@ nslookup storagekuboi01.blob.core.windows.net
 
 ---
 
-## 5-2 追加検証：マネージドIDでBlobを読み取る
+### 5-2. 追加検証：VMからBlobを読み取る
 
-同じ構成を別のストレージアカウント stkuboipe20261113 で作り、
-Ubuntu VMからPrivate Endpoint経由でテストファイルを読み取りました。
-1. VM vm-storage-pe-review のシステム割り当てマネージドIDを有効にしました。
-2. demo コンテナーのアクセス制御（IAM）で、VMのマネージドIDに Storage Blob Data Reader を割り当てました。
-3. VMにSSHで接続し、マネージドIDで取得したアクセストークンを使って hello Privateendpoint.txt を読み取りました。
-
-```bash
-(
-  token=$(curl --noproxy '*' -fsS -H 'Metadata: true' \
-    'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fstorage.azure.com%2F' |
-    python3 -c 'import json, sys; print(json.load(sys.stdin)["access_token"])') &&
-  printf 'Authorization: Bearer %s\n' "$token" |
-    curl --noproxy '*' -fsS -H @- -H 'x-ms-version: 2023-11-03' \
-      -w '\n接続先IP: %{remote_ip}\nHTTP: %{http_code}\n' \
-      'https://stkuboipe20261113.blob.core.windows.net/demo/hello%20Privateendpoint.txt'
-)
-```
-
-### 実行結果
-<img width="455" height="238" alt="スクリーンショット 2026-11-15 175633" src="https://github.com/user-attachments/assets/0cafc340-214d-42ac-950b-9d660e594efb" />
-
+VMのマネージドIDに `demo` コンテナーの読み取り権限を付けました。
+VMからPrivate Endpoint経由でアクセスし、テストファイルの内容と `HTTP 200` が返ることを確認しました。
 
 ---
 
