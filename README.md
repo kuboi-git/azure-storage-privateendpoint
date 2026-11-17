@@ -74,7 +74,7 @@ nslookup storagekuboi01.blob.core.windows.net
 
 ---
 
-### 5-2. 追加検証：VMからBlobを読み取る
+## 5-2. 追加検証：VMからBlobを読み取る
 
 VMのマネージドIDに `demo` コンテナーの読み取り権限を付けました。
 VMからPrivate Endpoint経由でアクセスし、テストファイルの内容と `HTTP 200` が返ることを確認しました。
